@@ -1,52 +1,63 @@
-class Character {
-  constructor(image) {
-    this.imageLines = 4;
-    this.imageColumns = 4;
-    this.imageWidth = 220;
-    this.imageHeight = 270;
-    this.image = image;
-    this.matrix = this.itemsArray();
-    this.currentFrame = 0;
-    this.imageX = 0;
-    this.imageY = height - this.imageHeight / 2;
-    this.dWidth = this.imageWidth / 2;
-    this.dHeight = this.imageHeight / 2;
-    this.subsectionWidth = this.imageWidth;
-    this.subsectionHeight = this.imageHeight;
+class Character extends AnimationCharacter {
+  constructor(
+    imageLines,
+    imageColumns,
+    image,
+    imageX,
+    dWidth,
+    dHeight,
+    widthSprite,
+    heightSprite
+  ) {
+    super(
+      imageLines,
+      imageColumns,
+      image,
+      imageX,
+      dWidth,
+      dHeight,
+      widthSprite,
+      heightSprite
+    );
+
+    this.initialY = height - this.dHeight;
+    this.imageY = this.initialY;
+
+    this.gravity = 3;
+    this.jumpSpeed = 0;
   }
 
-  itemsArray() {
-    const arr = [];
+  jump() {
+    this.jumpSpeed = -50;
+  }
 
-    for (let i = 0; i < this.imageLines; i++) {
-      for (let j = 0; j < this.imageColumns; j++) {
-        arr.push([j * this.imageWidth, i * this.imageHeight]);
-      }
+  applyGravity() {
+    this.imageY = this.imageY + this.jumpSpeed;
+    this.jumpSpeed = this.jumpSpeed + this.gravity;
+
+    if (this.imageY > this.initialY) {
+      this.imageY = this.initialY;
     }
-
-    return arr;
   }
 
-  show() {
-    const subsectionX = this.matrix[this.currentFrame][0];
-    const subsectionY = this.matrix[this.currentFrame][1];
+  isColliding(enemy) {
+    // noFill();
+    // rect(this.imageX, this.imageY, this.dWidth, this.dHeight);
+    // rect(enemy.imageX, enemy.imageY, enemy.dWidth, enemy.dHeight);
 
-    image(
-      this.image,
+    const precision = 0.7;
+
+    const collision = collideRectRect(
       this.imageX,
       this.imageY,
-      this.dWidth,
-      this.dHeight,
-      subsectionX,
-      subsectionY,
-      this.subsectionWidth,
-      this.subsectionHeight
+      this.dWidth * precision,
+      this.dHeight * precision,
+      enemy.imageX,
+      enemy.imageY,
+      enemy.dWidth * precision,
+      enemy.dHeight * precision
     );
-    this.animate();
-  }
 
-  animate() {
-    this.currentFrame =
-      this.currentFrame < this.matrix.length - 1 ? this.currentFrame + 1 : 0;
+    return collision;
   }
 }
