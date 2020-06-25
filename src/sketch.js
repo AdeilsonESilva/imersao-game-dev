@@ -28,9 +28,9 @@ function setup() {
 
   scenario = new Scenario(imageScenario, 3);
   clouds = new Clouds(imageClouds, 12);
-  enemy = new Enemy(7, 4, imageEnemy, width - 52, 52, 52, 104, 104);
-  bee = new Bee(1, 2, imageBee, 0, 100, 65, 496, 321, 500);
-  character = new Character(4, 4, imageCharacter, 0, 110, 135, 220, 270);
+  enemy = new Enemy(7, 4, imageEnemy, width - 52, 30, 52, 52, 104, 104);
+  bee = new Bee(1, 2, imageBee, 0, 500, 100, 65, 496, 321);
+  character = new Character(4, 4, imageCharacter, 0, 30, 110, 135, 220, 270);
   gameOver = new GameOver(imageGameOver);
 
   soundGame.loop();

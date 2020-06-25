@@ -4,17 +4,18 @@ class AnimationCharacter {
     imageColumns,
     image,
     imageX,
+    variationY,
     dWidth,
     dHeight,
     widthSprite,
-    heightSprite,
-    imageY
+    heightSprite
   ) {
     this.imageLines = imageLines;
     this.imageColumns = imageColumns;
     this.image = image;
     this.imageX = imageX;
-    this.imageY = imageY || height - heightSprite / 2;
+    this.variationY = variationY;
+    this.imageY = height - heightSprite / 2 - this.variationY;
     this.dWidth = dWidth;
     this.dHeight = dHeight;
     this.widthSprite = widthSprite;

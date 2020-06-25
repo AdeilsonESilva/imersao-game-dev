@@ -4,6 +4,7 @@ class Character extends AnimationCharacter {
     imageColumns,
     image,
     imageX,
+    variationY,
     dWidth,
     dHeight,
     widthSprite,
@@ -14,13 +15,16 @@ class Character extends AnimationCharacter {
       imageColumns,
       image,
       imageX,
+      variationY,
       dWidth,
       dHeight,
       widthSprite,
       heightSprite
     );
 
-    this.initialY = height - this.dHeight;
+    this.variationY = variationY;
+
+    this.initialY = height - this.dHeight - this.variationY;
     this.imageY = this.initialY;
 
     this.gravity = 3;

@@ -4,22 +4,22 @@ class Bee extends AnimationCharacter {
     imageColumns,
     image,
     imageX,
+    variationY,
     dWidth,
     dHeight,
     widthSprite,
-    heightSprite,
-    imageY
+    heightSprite
   ) {
     super(
       imageLines,
       imageColumns,
       image,
       imageX,
+      variationY,
       dWidth,
       dHeight,
       widthSprite,
-      heightSprite,
-      imageY
+      heightSprite
     );
 
     this.speed = 5;
