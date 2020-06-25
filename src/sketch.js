@@ -52,14 +52,14 @@ function draw() {
   clouds.show();
   clouds.move();
 
+  bee.show();
+  bee.move();
+
   character.show();
   character.applyGravity();
 
   enemy.show();
   enemy.move();
-
-  bee.show();
-  bee.move();
 
   if (character.isColliding(enemy)) {
     noLoop();
