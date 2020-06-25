@@ -25,10 +25,17 @@ class Character extends AnimationCharacter {
 
     this.gravity = 3;
     this.jumpSpeed = 0;
+    this.maxJump = 2;
+    this.qtyJumps = 0;
   }
 
   jump() {
+    if (this.qtyJumps >= this.maxJump) {
+      return;
+    }
+
     this.jumpSpeed = -50;
+    this.qtyJumps += 1;
   }
 
   applyGravity() {
@@ -37,6 +44,8 @@ class Character extends AnimationCharacter {
 
     if (this.imageY > this.initialY) {
       this.imageY = this.initialY;
+
+      this.qtyJumps = 0;
     }
   }
 
